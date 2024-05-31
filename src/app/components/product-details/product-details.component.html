@@ -1,0 +1,18 @@
+<div id="container">
+    <ng-container *ngIf="!loading">
+        <div class="card" style="width: 18rem;">
+            <img [src]="productDetails?.image" class="card-img-top" alt="...">
+            <div class="card-body">
+                <p class="card-text">Codigo: {{productDetails?.id}}</p>
+                <p>Nombre: {{productDetails?.name}}</p>
+                <p>Precio: {{productDetails?.price | currency}}</p>
+                <p *ngIf="productDetails?.category">Categoria: {{productDetails?.category}}</p>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="loading">
+        <div id="loading">
+            <div class="spinner"></div>
+        </div>
+    </ng-container>
+</div>

@@ -1,0 +1,47 @@
+<div class="container mt-4 border border-primary rounded p-3">
+    <form #myFormulario="ngForm" (ngSubmit)="enviarDatos()">
+        <h3>Formularios Basados en Plantillas</h3>
+        <div class="mb-3">
+            <label for="name" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="name" [(ngModel)]="usuario.nombre" required name="name">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="text" class="form-control" id="email" [(ngModel)]="usuario.email" required
+                [ngModelOptions]="{standalone: true}">
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>
+<!--    -->
+<div class="container mt-4 border border-success rounded p-3 mb-3">
+    <form [formGroup]="formularioContacto" (ngSubmit)="datosFormulario()">
+        <h3>Formularios Reactivos</h3>
+        <div class="mb-3">
+            <label for="name2" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="name2" formControlName="nombre"
+                [ngClass]="{'is-invalid': hasErrors('nombre', 'required')}">
+            <div class="text-danger" *ngIf="hasErrors('nombre', 'required')">Nombre requerido.</div>
+        </div>
+        <div class="mb-3">
+            <label for="email2" class="form-label">Email</label>
+            <input type="text" class="form-control" id="email2" formControlName="email"
+                [ngClass]="{'is-invalid': hasErrors('email', 'email') || hasErrors('email', 'required')}">
+            <div class="text-danger" *ngIf="hasErrors('email', 'email')">Email invalido.</div>
+            <div class="text-danger" *ngIf="hasErrors('email', 'required')">Email requerido.</div>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Tipo DNI:</label>
+            <select class="form-select" aria-label="Default select example" formControlName="tipoDni">
+                <option value="DNI">DNI</option>
+                <option value="Pasaporte">Pasaporte</option>
+                <option value="Cedula">Cedula</option>
+              </select>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">{{tipoDni}}</label>
+            <input type="text" class="form-control" id="dni">
+        </div>
+        <button type="submit" class="btn btn-success">Enviar</button>
+    </form>
+</div>

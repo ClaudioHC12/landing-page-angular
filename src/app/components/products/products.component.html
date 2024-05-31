@@ -1,0 +1,24 @@
+<h1>Productos</h1>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr class="table-dark">
+            <th scope="col">#</th>
+            <th scope="col">Producto</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Detalle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of products">
+            <th scope="row">{{item.id}}</th>
+            <td>{{item.name}}</td>
+            <td [ngClass]="{
+                'red-color': (item.price > 15000), 
+                'green-color': (item.price < 2000)}">{{item.price |currency}}
+            </td>
+            <td>
+                <button type="button" class="btn btn-outline-warning" [routerLink]="['/products',item.id]">Info</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
