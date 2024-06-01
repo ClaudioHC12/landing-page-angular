@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent implements OnInit, OnDestroy {
 
   protected usuario = {
     nombre: '',
@@ -25,6 +25,10 @@ export class ContactComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       tipoDni: ['']
     });
+  }
+  ngOnDestroy(): void {
+    console.log('Se destruyó el componente');
+    
   }
   ngOnInit(): void {
     this.formularioContacto.get('nombre')?.setValue(this.usuarioActivo);

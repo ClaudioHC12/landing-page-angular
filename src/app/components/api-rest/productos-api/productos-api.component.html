@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>Products</h1>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr class="table-dark">
+                <th scope="col">#</th>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Category</th>
+                <th scope="col">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of productsList">
+                <th scope="row">{{item.id}}</th>
+                <td>{{item.title}}</td>
+                <td [ngClass]="{'text-primary': item.price > 100, 'text-danger': item.price < 10}">{{item.price |currency}}
+                <td>{{item.category}}
+                </td>
+                <td>
+                    <button type="button" class="btn btn-outline-warning" [routerLink]="['/products-api',item.id]">🔎</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

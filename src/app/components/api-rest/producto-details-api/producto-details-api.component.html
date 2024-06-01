@@ -1,0 +1,21 @@
+<div class="bg-black pt-3 pb-3">
+    <div class="container">
+        <ng-container *ngIf="!loading">
+            <div class="card mx-auto bg-dark text-light" style="width: 300px;">
+                <img [src]="productDetails?.image" class="card-img-top" height="300px">
+                <div class="card-body">
+                    <p class="card-text">Codigo: {{productDetails?.id}}</p>
+                    <p class="card-text">Nombre: {{productDetails?.title}}</p>
+                    <p class="card-text">Precio: {{productDetails?.price | currency}}</p>
+                    <p class="card-text" *ngIf="productDetails?.category">Categoria: {{productDetails?.category}}</p>
+                    <p class="card-text">Description: {{productDetails?.description}}</p>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="loading">
+            <div id="loading">
+                <div class="spinner"></div>
+            </div>
+        </ng-container>
+    </div>
+</div>
